@@ -2,20 +2,20 @@ import React, {
   PropsWithChildren,
   createContext,
   useContext,
-  useEffect,
   useState,
 } from "react";
 
 export type Pokemon = {
   id: number;
-  label: string;
-  // ..
+  name: string;
+  types: string[];
+  imageUrl: string;
 };
 
 interface PokemonContextType {
   pokemon: Pokemon[];
   team: Pokemon[];
-  addPokemon: () => void;
+  selectPokemon: (id: number) => void;
 }
 
 const PokemonContext = createContext<PokemonContextType | undefined>(undefined);
@@ -23,25 +23,17 @@ const PokemonContext = createContext<PokemonContextType | undefined>(undefined);
 export const PokemonProvider = ({ children }: PropsWithChildren) => {
   const [team, setTeam] = useState<Pokemon[]>([]);
   const [pokemon, setPokemon] = useState<Pokemon[]>([
-    { label: "Pikachu", id: 1 },
-    { label: "Charmander", id: 2 },
-    { label: "Bulbasaur", id: 3 },
+    { name: "Pikachu", id: 1, types: ["electric"], imageUrl: "/pokemon.png" },
+    { name: "Charmander", id: 2, types: ["fire"], imageUrl: "/pokemon.png" },
+    { name: "Bulbasaur", id: 3, types: ["grass"], imageUrl: "/pokemon.png" },
   ]);
 
-  const fetchPokemon = () => {
+  const selectPokemon = (id: number) => {
     // ...
   };
-
-  const addPokemon = () => {
-    // ...
-  };
-
-  useEffect(() => {
-    fetchPokemon();
-  }, []);
 
   return (
-    <PokemonContext.Provider value={{ team, pokemon, addPokemon }}>
+    <PokemonContext.Provider value={{ team, pokemon, selectPokemon }}>
       {children}
     </PokemonContext.Provider>
   );

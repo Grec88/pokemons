@@ -1,4 +1,11 @@
-import { Container, Typography, Box } from "@mui/material";
+import {
+  Container,
+  Typography,
+  Box,
+  Stack,
+  AppBar,
+  Toolbar,
+} from "@mui/material";
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.scss";
@@ -20,12 +27,18 @@ export default function Home() {
       <main className={`${styles.main} ${inter.className}`}>
         <Container maxWidth="md">
           <Box my={4}>
-            <Typography variant="h4" component="h1" gutterBottom>
-              Pokemon Team
-            </Typography>
-            <Search />
-            <PokemonList />
-            <Stats />
+            <AppBar position="static">
+              <Toolbar>
+                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                  Build a Pokemon Team
+                </Typography>
+              </Toolbar>
+            </AppBar>
+            <Stack spacing={2}>
+              <Search />
+              <PokemonList />
+              <Stats />
+            </Stack>
           </Box>
         </Container>
       </main>

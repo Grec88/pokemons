@@ -4,20 +4,26 @@ import Autocomplete from "@mui/material/Autocomplete";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import { usePokemonContext } from "@/context/PokemonContext";
+import { Card } from "@mui/material";
 
 export default function Search() {
-  const { pokemon, addPokemon } = usePokemonContext();
+  const { pokemon } = usePokemonContext();
 
   return (
-    <Stack spacing={2} direction="row">
-      <Autocomplete
-        disablePortal
-        id="pokemon-search"
-        options={pokemon}
-        sx={{ width: 300 }}
-        renderInput={(params) => <TextField {...params} label="Pokemon" />}
-      />
-      <Button variant="contained">Add</Button>
-    </Stack>
+    <Card sx={{ p: 2 }}>
+      <Stack spacing={2} direction={{ xs: "column", sm: "row" }}>
+        <Autocomplete
+          disablePortal
+          id="pokemon-search"
+          options={pokemon.map((pokemon) => pokemon.name)}
+          onChange={() => {}}
+          sx={{ flexGrow: 1 }}
+          renderInput={(params) => <TextField {...params} label="Pokemon" />}
+        />
+        <Button sx={{ width: "100%", maxWidth: 150 }} variant="contained">
+          Add
+        </Button>
+      </Stack>
+    </Card>
   );
 }

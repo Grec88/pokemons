@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
 import axios from "axios";
 
-export interface Pokemon {
+export interface PokemonOption {
   name: string;
   url: string;
 }
@@ -10,7 +10,7 @@ export interface PokemonApiResponse {
   count: number;
   next: string;
   previous: string | null;
-  results: Pokemon[];
+  results: PokemonOption[];
 }
 
 async function fetchAllPokemon(

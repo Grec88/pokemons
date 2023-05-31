@@ -13,4 +13,3 @@ npm run dev
 [Pokemon API](https://pokeapi.co/)
 [Pokemon Types](https://pokemondb.net/type)
 [Pokemon Dual Types](https://pokemondb.net/type/dual)
-
