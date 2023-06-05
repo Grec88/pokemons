@@ -16,7 +16,9 @@ export default function Search() {
           disablePortal
           id="pokemon-search"
           options={pokemon.map((pokemon) => pokemon.name)}
-          onChange={() => {}}
+          onChange={(event: React.SyntheticEvent<Element, Event>, newValue) => {
+            console.log(newValue);
+          }}
           sx={{ flexGrow: 1 }}
           renderInput={(params) => <TextField {...params} label="Pokemon" />}
         />
