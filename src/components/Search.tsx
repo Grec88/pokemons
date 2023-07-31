@@ -5,10 +5,12 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import { usePokemonContext } from "@/context/PokemonContext";
 import { Card } from "@mui/material";
+import { useAllPokemon } from "@/queries/useAllPokemon";
 
 export default function Search() {
   const { pokemon } = usePokemonContext();
-
+  const pokemons = useAllPokemon();
+  // console.log(pokemons.data);
   return (
     <Card sx={{ p: 2 }}>
       <Stack spacing={2} direction={{ xs: "column", sm: "row" }}>
