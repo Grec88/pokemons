@@ -1,6 +1,7 @@
 import { Box, Card, Chip, IconButton, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { usePokemonContext } from "@/context/PokemonContext";
 
 function PokemonCard({
   imageUrl,
@@ -56,25 +57,23 @@ function PokemonCard({
 }
 
 function PokemonList() {
+  const { pokemon } = usePokemonContext();
+
   return (
-    <Stack spacing={2} direction={{ xs: "column", sm: "row" }}>
-      <PokemonCard
-        name="Bulbasaur"
-        imageUrl="/pokemon.png"
-        types={["grass", "fire"]}
-      />
-
-      <PokemonCard
-        name="Bulbasaur"
-        imageUrl="/pokemon.png"
-        types={["grass", "normal"]}
-      />
-
-      <PokemonCard
-        name="Bulbasaur"
-        imageUrl="/pokemon.png"
-        types={["grass", "poison"]}
-      />
+    <Stack
+      flexWrap="wrap"
+      justify-content="space-around"
+      gap={2}
+      direction={{ xs: "column", sm: "row" }}
+    >
+      {pokemon.map((pokemon) => (
+        <PokemonCard
+          key={pokemon.id}
+          name={pokemon.name}
+          imageUrl={pokemon.imageUrl}
+          types={["grass", "fire"]}
+        />
+      ))}
     </Stack>
   );
 }
